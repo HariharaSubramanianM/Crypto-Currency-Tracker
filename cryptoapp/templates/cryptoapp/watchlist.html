@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="en">
-
+{% load static %}  
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -9,6 +9,7 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
     <link rel="shortcut icon" href="favicon.png" type="image/png">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <title>Crypto Django API</title>
     <style>
         body {
@@ -55,23 +56,18 @@
                             <th scope="col">Image</th>
                             <th scope="col">Current Price</th>
                             <th scope="col">Market Capital</th>
+                            <th scope="col">Select</th>
                         </tr>
                     </thead>
-                    <tbody id="myTable">
+                    <tbody id="myWL">
 
-                        {% for i in apidata %}
-                            <tr>
-                                <td>{{ i.name }}</td> 
-                                <td>{{ i.symbol }}</td> 
-                                <td><img src = {{ i.image }}></td> 
-                                <td>₹{{ i.current_price }}</td> 
-                                <td>{{ i.market_cap }}</td> 
-                            </tr>
-                        
-                        {% endfor %}
-                        
                     </tbody>
                 </table>
+
+                <div class="tab tab-btn">
+                    <button>Remove from Watchlist</button>
+                </div>
+
             </div>
         </div>
     </section>
@@ -79,17 +75,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-p34f1UUtsS3wqzfto5wAAmdvj+osOnFyQFpp4Ua3gs/ZVWx6oOypYoCJhGGScy+8"
         crossorigin="anonymous"></script>
-    <script>
-        $(document).ready(function () {
-            $("#myInput").on("keyup", function () {
-                var value = $(this).val().toLowerCase();
-                $("#myTable tr").filter(function () {
-                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-                });
-            });
-        });
-    </script>
-
+    <script type="text/javascript" src="/static/cryptoapp/js/crypto.js"></script>
 </body>
 
 </html>
