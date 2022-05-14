@@ -58,6 +58,17 @@
                         </tr>
                     </thead>
                     <tbody id="myTable">
+
+                        {% for i in apidata %}
+                            <tr>
+                                <td>{{ i.name }}</td> 
+                                <td>{{ i.symbol }}</td> 
+                                <td><img src = {{ i.image }}></td> 
+                                <td>₹{{ i.current_price }}</td> 
+                                <td>{{ i.market_cap }}</td> 
+                            </tr>
+                        
+                        {% endfor %}
                         
                     </tbody>
                 </table>
