@@ -1,0 +1,1 @@
+web: gunicorn cryptotrackeronline.wsgi --log-file -
