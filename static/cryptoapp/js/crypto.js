@@ -5,6 +5,11 @@ $(document).ready(function () {
             $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
         });
     });
+
+    /*$("#btn_uncheck").click(function(){
+        $("#checklist").prop("checked", false);
+        console.log("hi");
+    });*/
 });
 
 function main_to_wl(){
@@ -22,17 +27,27 @@ function main_to_wl(){
                 c3.innerHTML = myTable.rows[i].cells[3].innerHTML;
                 c4.innerHTML = myTable.rows[i].cells[4].innerHTML;
                 c5.innerHTML = "<button class= 'button-82-pushable' onclick='remove_from_wl();' role='button'>  <span class='button-82-shadow'></span><span class='button-82-edge'></span><span class='button-82-front text'>Delete</span></button>";
-
+                
                 watchlist.push(i);
                 console.log(watchlist);
                 
             }
         }
 
+        uncheckAll();
+        
+}
+/*var checkboxes = document.querySelectorAll("input[type='checkbox']");*/
+function uncheckAll(){
+    let checkedboxes = document.getElementsByName("check-t1");
+    for (var x=0;x<checkedboxes.length;x++){
+        checkedboxes[x].checked=false;
+    }
 }
 
+
 function remove_from_wl(){
-var index, table = document.getElementById('myWL');
+var index,  table = document.getElementById('myWL');
 for (var i=0;i<table.rows.length;i++){
     table.rows[i].cells[5].onclick = function(){
         index = this.parentElement.rowIndex-1;
